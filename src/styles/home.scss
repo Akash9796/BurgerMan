@@ -1,0 +1,65 @@
+@import "color.scss";
+
+.home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  > div {
+    // border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    padding-left: 8rem;
+    > h1 {
+      font-size: 4rem;
+      text-transform: uppercase;
+      > span {
+        color: $red;
+      }
+    }
+    > p {
+      font-size: 1.2rem;
+      margin: 5px;
+    }
+  }
+  > a {
+    margin: 2rem 8rem;
+    width: 9rem;
+    background-color: $red;
+    color: white;
+    text-align: center;
+    border: none;
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    &:hover {
+      background-color: $reddark;
+    }
+  }
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: url("../assests/burger3.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: -10;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .home {
+    place-items: center;
+    padding-right: 100px;
+
+    &::before {
+      content: "";
+      width: 85%;
+      background-size: contain;
+      bottom: -150px;
+      left: 50px;
+    }
+  }
+}
