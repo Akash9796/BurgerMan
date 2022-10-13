@@ -1,5 +1,7 @@
 import React from "react";
-import me from "../assests/founder.webp";
+// import me from "../assests/founder.webp";
+import me from "../assests/Akash.jpg";
+
 import "../styles/founder.scss";
 import { motion } from "framer-motion";
 

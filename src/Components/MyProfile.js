@@ -1,7 +1,8 @@
 import React from "react";
 import "../styles/myprofile.scss";
 import { motion } from "framer-motion";
-import me from "../assests/founder.webp";
+// import me from "../assests/founder.webp";
+import me from "../assests/Akash.jpg";
 import { Link } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
 
@@ -37,8 +38,8 @@ export default function MyProfile({ isAuthenticated }) {
             Dashboard
           </Link>
         </motion.div>
-        <motion.div {...options} transition={{ delay: 0.8 }}>
-          <Link to="/myorders">My Orders</Link>
+        <motion.div  {...options} transition={{ delay: 0.8 }}>
+          <Link  to="/myorders">My Orders</Link>
         </motion.div>
         <motion.button
           {...options}

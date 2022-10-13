@@ -9,9 +9,11 @@ import { motion } from "framer-motion";
 export default function Header({ isAuthenticated }) {
   return (
     <nav>
-      <motion.div initial={{ x: "-100%" }} whileInView={{ x: 0 }}>
-        <IoFastFoodOutline />
-      </motion.div>
+      <Link to="/">
+        <motion.div initial={{ x: "-100%" }} whileInView={{ x: 0 }}>
+          <IoFastFoodOutline />
+        </motion.div>
+      </Link>
       <div>
         <Link to="/">Home</Link>
         <Link to="/contact">Contact</Link>
