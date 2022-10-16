@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/BurgerMan/static/css/main.7ea7dc1c.css",
-    "main.js": "/BurgerMan/static/js/main.8a6d5e28.js",
+    "main.css": "/BurgerMan/static/css/main.e2fc970d.css",
+    "main.js": "/BurgerMan/static/js/main.f8e90ff8.js",
     "static/media/burger3.png": "/BurgerMan/static/media/burger3.11eccfcb1a45834ac9d7.png",
     "static/media/burger2.png": "/BurgerMan/static/media/burger2.3a02b94cd44d825ebb94.png",
     "static/media/Akash.jpg": "/BurgerMan/static/media/Akash.17abebc8c07cbc2d2048.jpg",
     "static/media/bg.png": "/BurgerMan/static/media/bg.e25df216162c9b2fc988.png",
     "static/media/burger1.png": "/BurgerMan/static/media/burger1.6cbf3dc63aff1ced8e98.png",
     "index.html": "/BurgerMan/index.html",
-    "main.7ea7dc1c.css.map": "/BurgerMan/static/css/main.7ea7dc1c.css.map",
-    "main.8a6d5e28.js.map": "/BurgerMan/static/js/main.8a6d5e28.js.map"
+    "main.e2fc970d.css.map": "/BurgerMan/static/css/main.e2fc970d.css.map",
+    "main.f8e90ff8.js.map": "/BurgerMan/static/js/main.f8e90ff8.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ea7dc1c.css",
-    "static/js/main.8a6d5e28.js"
+    "static/css/main.e2fc970d.css",
+    "static/js/main.f8e90ff8.js"
   ]
 }
