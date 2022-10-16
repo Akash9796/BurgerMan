@@ -17,7 +17,6 @@ import Dashboard from "./Components/admin/Dashboard";
 import { ProtectedRoute } from "protected-route-react";
 
 function App() {
-  const [cart, setCart] = useState([]);
 
   return (
     <Router basename="/BurgerMan">
@@ -38,9 +37,9 @@ function App() {
               <ProtectedRoute isAuthenticated={true} redirect="/login" />
             }
           >
-            <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
+            <Route path="/" element={<Home  />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/cart" element={<Cart cart={cart} />} />
+            <Route path="/cart" element={<Cart  />} />
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/confirmOrder" element={<ConfirmOrder />} />
             <Route path="/paymentSuccess" element={<PaymentSuccess />} />

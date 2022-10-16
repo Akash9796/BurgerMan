@@ -1,4 +1,11 @@
 import React, { useState } from "react";
+import {
+  increaseCount,
+  decreaseCount,
+  remove,
+  calculate,
+} from "../redux/Slices/cartSlice";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import burger1 from "../assests/burger1.png";
@@ -6,20 +13,15 @@ import burger2 from "../assests/burger2.png";
 import burger3 from "../assests/burger3.png";
 import "../styles/cart.scss";
 
-export default function Cart({ cart }) {
+export default function Cart() {
   const dispatch = useDispatch();
 
-  const {
-    cartItems: {
-      cheeseBurger: { quantity: cheeseBurger },
-      vegCheeseBurger: { quantity: vegCheeseBurger },
-      burgerwithFries: { quantity: burgerwithFries },
-    },
-    subTotal,
-    tax,
-    shippingCharges,
-    total,
-  } = useSelector((state) => state.cart);
+  const { subTotal, tax, shippingCharges, total } = useSelector(
+    (state) => state.cart
+  );
+
+  const products = useSelector((state) => state.cart.cartItems);
+  console.log(products);
 
   const CartItem = ({ value, title, img, increment, decrement }) => (
     <div className="cartItem">
@@ -35,86 +37,30 @@ export default function Cart({ cart }) {
     </div>
   );
   const [num, setNum] = useState(1);
-  const increment = (item) => {
-    // setNum(num + 1);
-
-    switch (item) {
-      case 1:
-        dispatch({ type: "cheeseBurgerIncrement" });
-        dispatch({ type: "calculatePrice" });
-        break;
-      case 2:
-        dispatch({ type: "vegCheeseBurgerIncrement" });
-        dispatch({ type: "calculatePrice" });
-        break;
-      case 3:
-        dispatch({ type: "BurgerwithFriesIncrement" });
-        dispatch({ type: "calculatePrice" });
-        break;
-      default:
-        dispatch({ type: "cheeseBurgerIncrement" });
-        dispatch({ type: "calculatePrice" });
-        break;
-    }
+  const increment = (i) => {
+    dispatch(increaseCount(i));
+    dispatch(calculate());
   };
 
-  const decrement = (item) => {
-    switch (item) {
-      case 1:
-        if (cheeseBurger < 1) break;
-        dispatch({ type: "cheeseBurgerDecrement" });
-        dispatch({ type: "calculatePrice" });
-        break;
-      case 2:
-        if (vegCheeseBurger < 1) break;
-        dispatch({ type: "vegCheeseBurgerDecrement" });
-        dispatch({ type: "calculatePrice" });
-        break;
-      case 3:
-        if (burgerwithFries < 0) break;
-        dispatch({ type: "BurgerwithFriesDecrement" });
-        dispatch({ type: "calculatePrice" });
-        break;
-      default:
-        dispatch({ type: "cheeseBurgerDecrement" });
-        dispatch({ type: "calculatePrice" });
-        break;
-    }
+  const decrement = (i) => {
+    i.cartQuantity > 1 ? dispatch(decreaseCount(i)) : dispatch(remove(i));
+    dispatch(calculate());
+
   };
 
   return (
     <section className="cart">
       <main>
-        {/* {cart.map((i) => (
+        {products?.map((i) => (
           <CartItem
+            key={i.id}
             title={i.name}
             img={burger1}
-            value={num}
-            increment={() => increment(1)}
-            decrement={() => decrement(1)}
+            value={i.cartQuantity}
+            increment={() => increment(i)}
+            decrement={() => decrement(i)}
           />
-        ))} */}
-        <CartItem
-          title={"Cheese Burger"}
-          img={burger1}
-          value={cheeseBurger}
-          increment={() => increment(1)}
-          decrement={() => decrement(1)}
-        />
-        <CartItem
-          title={"veg Cheese Burger"}
-          img={burger2}
-          value={vegCheeseBurger}
-          increment={() => increment(2)}
-          decrement={() => decrement(2)}
-        />
-        <CartItem
-          title={"Burger with Fries"}
-          img={burger3}
-          value={burgerwithFries}
-          increment={() => increment(3)}
-          decrement={() => decrement(3)}
-        />
+        ))}
 
         <article>
           <div>

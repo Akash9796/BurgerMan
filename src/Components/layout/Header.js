@@ -5,8 +5,14 @@ import { FiShoppingCart, FiLogIn } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 export default function Header({ isAuthenticated }) {
+
+
+  const products = useSelector((state) => state.cart.cartItems);
+
+
   return (
     <nav>
       <Link to="/">
@@ -18,7 +24,9 @@ export default function Header({ isAuthenticated }) {
         <Link to="/">Home</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/about">About</Link>
-        <Link to="/cart">
+        <Link to="/cart" className="cartButton"
+        data-count={products?.length}
+        >
           <FiShoppingCart />
         </Link>
         <Link to={isAuthenticated ? "/me" : "/login"}>

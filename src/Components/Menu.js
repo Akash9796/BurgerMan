@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/menu.scss";
+import {add,calculate} from "../redux/Slices/cartSlice"
 import MenuCard from "./MenuCard";
 import burger1 from "../assests/burger1.png";
 import burger2 from "../assests/burger2.png";
 import burger3 from "../assests/burger3.png";
+import { useDispatch } from "react-redux";
 
-export default function Menu({cart, setCart}) {
+export default function Menu() {
+  const dispatch = useDispatch()
   const options = {
     method: "GET",
     url: "https://burgers1.p.rapidapi.com/burgers",
@@ -31,39 +34,15 @@ export default function Menu({cart, setCart}) {
   }, []);
 
   const addToCartHandler = (i) => {
-    console.log(i);
-    setCart([...cart, i]);
-    console.log(cart);
+    dispatch(add(i));
+    dispatch(calculate());
+    console.log("Added");
   };
 
   return (
     <section id="menu">
       <h1>Menu</h1>
       <div>
-        {/* <MenuCard
-          itemNum={1}
-          burgerSrc={burger1}
-          price={200}
-          title="Cheese Burger"
-          handler={addToCartHandler}
-          delay={0.1}
-        />
-        <MenuCard
-          itemNum={2}
-          burgerSrc={burger2}
-          price={500}
-          title="Veg Cheese Burger"
-          handler={addToCartHandler}
-          delay={0.5}
-        />
-        <MenuCard
-          itemNum={3}
-          burgerSrc={burger3}
-          price={1800}
-          title="Cheese Burger with French Fries"
-          handler={addToCartHandler}
-          delay={0.8}
-        /> */}
         {data &&
           data.map((c, i) => (
             <MenuCard

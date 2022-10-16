@@ -1,6 +1,22 @@
 @import "color";
 
-
+.cartButton {
+  position: relative;
+}
+.cartButton::before {
+  content: attr(data-count);
+  position: absolute;
+  top: -0.75em;
+  right: -0.75em;
+  width: 1.5em;
+  height: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}
 
 nav {
   height: 5rem;
@@ -11,7 +27,8 @@ nav {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.229);
   background-color: white;
 
-  > div,a>div {
+  > div,
+  a > div {
     display: flex;
     align-items: center;
 
